@@ -1,9 +1,11 @@
 import fastify from 'fastify'
+import { knex } from './dbase'
 
 const app = fastify()
 
-app.get('/hello', () => {
-  return '?Hello, RESTful World!'
+app.get('/hello', async () => {
+  const test = await knex('sqlite_schema').select('*')
+  return test
 })
 
 const theAuthor: string = 'Osmar Menezes da Silva (Mazinho)'
