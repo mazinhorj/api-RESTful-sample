@@ -1,0 +1,11 @@
+POST http://localhost:3333/transactions
+Content-Type: 'application/json'
+
+{
+  "title": "Segunda operação",
+  "amount": 9576,
+  "type": "credit"
+}
+
+###
+GET http://localhost:3333/transactions
