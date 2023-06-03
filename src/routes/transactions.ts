@@ -5,6 +5,10 @@ import { knex } from '../dbase'
 import { chkSessionIdExists } from '../middlewares/chk-sessionId-exists'
 
 export async function transactionsRoutes(app: FastifyInstance) {
+  // hook global para todas as rotas desse contexto
+  app.addHook('preHandler', async (req, rep) => {
+    console.log(`[${req.method}] -> ${req.url}`)
+  })
   // C do CRUD
   app.post('/', async (req, rep) => {
     const createTransactionBodySchema = z.object({
@@ -48,13 +52,13 @@ export async function transactionsRoutes(app: FastifyInstance) {
         id: z.string().uuid(),
       })
 
-      const { id } = getTransactionParamsSchema.parse(req.params)
       const { sessionId } = req.cookies
+      const { id } = getTransactionParamsSchema.parse(req.params)
 
       const transaction = await knex('transactions')
         .where({
-          id,
           session_id: sessionId,
+          id,
         })
         .first()
 
@@ -89,7 +93,7 @@ export async function transactionsRoutes(app: FastifyInstance) {
     async (req, rep) => {
       const { sessionId } = req.cookies
 
-      console.log('to passando')
+      // console.log('to passando')
       const transaction = await knex('transactions')
         .select('*') // pode dispensar o '*', mesmo resultado
         .where('session_id', sessionId)
@@ -99,6 +103,7 @@ export async function transactionsRoutes(app: FastifyInstance) {
     },
   )
 
+  // rota perigosa... sem autenticação!
   app.get('/all', async (req, rep) => {
     const transaction = await knex('transactions')
       .select('*') // pode dispensar o '*', mesmo resultado
