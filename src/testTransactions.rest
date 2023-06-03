@@ -2,10 +2,16 @@ POST http://localhost:3333/transactions
 Content-Type: 'application/json'
 
 {
-  "title": "Segunda operação",
-  "amount": 9576,
+  "title": "OP 05",
+  "amount": 12457,
   "type": "credit"
 }
 
 ###
 GET http://localhost:3333/transactions
+
+###
+GET http://localhost:3333/transactions/summary
+
+###
+GET http://localhost:3333/transactions/0c1656bd-2b10-4f54-9441-dfe514adc12b

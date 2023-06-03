@@ -12,3 +12,5 @@ declare module 'knex/types/tables' {
     }
   }
 }
+
+// este arquivo contém configurações para uso do knex com typescript - tipagem dos campos presentes nas tabelas do banco de dados
