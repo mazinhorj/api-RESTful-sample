@@ -1,4 +1,5 @@
 import { FastifyInstance } from 'fastify'
+import { execSync } from 'node:child_process'
 import crypto, { randomUUID } from 'node:crypto'
 import { z } from 'zod'
 import { knex } from '../dbase'
@@ -29,6 +30,7 @@ export async function transactionsRoutes(app: FastifyInstance) {
       })
     }
 
+    execSync('npm run knex migrate:latest')
     await knex('transactions')
       .insert({
         id: crypto.randomUUID(),
@@ -94,12 +96,12 @@ export async function transactionsRoutes(app: FastifyInstance) {
       const { sessionId } = req.cookies
 
       // console.log('to passando')
-      const transaction = await knex('transactions')
+      const transactions = await knex('transactions')
         .select('*') // pode dispensar o '*', mesmo resultado
         .where('session_id', sessionId)
         .orderBy('createdAt', 'desc')
 
-      return { transaction }
+      return { transactions }
     },
   )
 

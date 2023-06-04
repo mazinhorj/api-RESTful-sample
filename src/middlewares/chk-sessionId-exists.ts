@@ -6,7 +6,7 @@ export async function chkSessionIdExists(
 ) {
   const sessionId = req.cookies.sessionId
   if (!sessionId) {
-    console.log('caiu aqui')
+    console.log('caiu no middleware')
     return rep.status(401).send({
       error: 'Opração não autorizada!',
     })
