@@ -1,4 +1,5 @@
 import { FastifyInstance } from 'fastify'
+// eslint-disable-next-line no-unused-vars
 import { execSync } from 'node:child_process'
 import crypto, { randomUUID } from 'node:crypto'
 import { z } from 'zod'
@@ -30,7 +31,7 @@ export async function transactionsRoutes(app: FastifyInstance) {
       })
     }
 
-    execSync('npm run knex migrate:latest')
+    // execSync('npm run knex migrate:latest')
     await knex('transactions')
       .insert({
         id: crypto.randomUUID(),
