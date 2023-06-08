@@ -5,6 +5,7 @@ Estudando APIs RESTful
 # REQUISITOS FUNCIONAIS
 
   1.1 - Sobre usuário:
+
     -> [x] - criar nova transação;
     -> [ ] - obter resumo da 'conta';
     -> [x] - listar todas as transações passadas;
