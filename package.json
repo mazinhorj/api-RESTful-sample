@@ -4,10 +4,11 @@
   "description": "Estudando APIs RESTful",
   "main": "index.js",
   "scripts": {
-    "test": "vitest",
     "dev": "tsx watch src/server.ts",
     "knex": "node --no-warnings --loader tsx ./node_modules/.bin/knex",
-    "lint": "eslint src --ext .ts --fix"
+    "lint": "eslint src --ext .ts --fix",
+    "build": "tsup src -d build",
+    "test": "vitest"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
     "@types/supertest": "^2.0.12",
     "eslint": "^8.41.0",
     "supertest": "^6.3.3",
+    "tsup": "^6.7.0",
     "tsx": "^3.12.7",
     "typescript": "^5.0.4",
     "vitest": "^0.31.4"
