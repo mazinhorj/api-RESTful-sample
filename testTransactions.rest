@@ -1,4 +1,4 @@
-POST http://localhost:3333/transactions
+POST http://localhost:3000/transactions
 Content-Type: 'application/json'
 
 {
@@ -8,10 +8,10 @@ Content-Type: 'application/json'
 }
 
 ###
-GET http://localhost:3333/transactions
+GET http://localhost:3000/transactions
 
 ###
-GET http://localhost:3333/transactions/summary
+GET http://localhost:3000/transactions/summary
 
 ###
-GET http://localhost:3333/transactions/0c1656bd-2b10-4f54-9441-dfe514adc12b
+GET http://localhost:3000/transactions/0c1656bd-2b10-4f54-9441-dfe514adc12b
